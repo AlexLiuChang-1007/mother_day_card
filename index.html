@@ -3,218 +3,175 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>母亲节贺卡 | For Mom</title>
+<title>母亲节快乐 ❤️ For Mom</title>
 <style>
-* {margin: 0; padding: 0; box-sizing: border-box;}
-body {
-  min-height: 100vh;
-  background: linear-gradient(145deg, #fff0f8, #ffe6f2, #ffdce8);
-  font-family: "Segoe UI", "微软雅黑", sans-serif;
-  overflow: hidden;
-  position: relative;
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:Arial,"微软雅黑",sans-serif;
+  background:linear-gradient(140deg,#ffe6f0,#fff0f6,#ffe6f3);
+  min-height:100vh;
+  overflow-x:hidden;
+  position:relative;
 }
 
-/* 星空花瓣飘落 */
-.fall-item {
-  position: fixed;
-  top: -8%;
-  pointer-events: none;
-  z-index: 1;
-  animation: fallRotate linear infinite;
-  opacity: 0.85;
+/* 飘落动画 */
+.fall{
+  position:fixed;
+  top:-10%;
+  z-index:1;
+  pointer-events:none;
+  animation:falling 6s linear infinite;
 }
-@keyframes fallRotate {
-  0% {transform: translateY(0) rotate(0deg); opacity: 0.9;}
-  100% {transform: translateY(100vh) rotate(360deg); opacity: 0;}
-}
-
-/* 书本贺卡外层 */
-.book {
-  position: relative;
-  width: 90%;
-  max-width: 460px;
-  height: 80vh;
-  margin: 10vh auto 0;
-  perspective: 1500px;
-  z-index: 2;
+@keyframes falling{
+  0%{transform:translateY(0) rotate(0deg);opacity:0.9;}
+  100%{transform:translateY(100vh) rotate(360deg);opacity:0;}
 }
 
-/* 单页样式 + 翻页3D */
-.page {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 15px 50px rgba(200,130,160,0.35);
-  transform-origin: left center;
-  transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-  overflow: hidden;
-  padding: 40px 25px;
-  text-align: center;
+/* 贺卡容器 - 手机100%兼容 */
+.card{
+  position:relative;
+  z-index:2;
+  width:92%;
+  max-width:480px;
+  margin:60px auto 0;
+  background:#fff;
+  border-radius:24px;
+  box-shadow:0 10px 40px rgba(210,140,170,0.3);
+  padding:40px 30px;
+  text-align:center;
 }
 
 /* 封面 */
-.page-cover {
-  background: linear-gradient(160deg, #fdd8e8, #f8c8dc);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.cover{
+  display:block;
 }
-.cover-title {
-  font-size: 34px;
-  color: #c72c61;
-  font-weight: bold;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-  opacity: 0;
-  animation: fadeUp 2s ease forwards 0.5s;
+.cover h1{
+  font-size:34px;
+  color:#d93a70;
+  margin:20px 0 10px;
 }
-.cover-sub {
-  font-size: 16px;
-  color: #a06080;
-  opacity: 0;
-  animation: fadeUp 2s ease forwards 0.8s;
+.cover p{
+  color:#b46b8d;
+  font-size:16px;
+  margin-bottom:30px;
 }
-.tip-open {
-  position: absolute;
-  bottom: 40px;
-  font-size: 14px;
-  color: #b888a0;
-  animation: blink 2s infinite;
-}
-@keyframes blink {0%,100%{opacity:0.5;}50%{opacity:1;}}
-
-/* 内页文字 */
-.inner-title {
-  font-size: 28px;
-  color: #c72c61;
-  margin-bottom: 25px;
-}
-.text-line {
-  font-size: 16px;
-  color: #555;
-  line-height: 2.2;
-  opacity: 0;
-}
-.signature {
-  position: absolute;
-  bottom: 50px;
-  right: 30px;
-  font-size: 17px;
-  color: #c72c61;
-  font-weight: bold;
+.btn-open{
+  background:#d93a70;
+  color:white;
+  border:none;
+  padding:14px 28px;
+  border-radius:30px;
+  font-size:16px;
+  margin-top:20px;
 }
 
-/* 翻页激活态 */
-.book.open .page-cover {
-  transform: rotateY(-180deg);
+/* 内页 */
+.inner{
+  display:none;
 }
-.page-inner {
-  transform: rotateY(180deg);
+.inner h2{
+  font-size:28px;
+  color:#d93a70;
+  margin-bottom:25px;
 }
-.book.open .page-inner {
-  transform: rotateY(0deg);
+.inner .text{
+  color:#444;
+  font-size:16px;
+  line-height:2.3;
+  text-align:left;
 }
-
-/* 文字逐字浮现 */
-@keyframes fadeUp {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-/* 点击爱心特效 */
-.heart-burst {
-  position: fixed;
-  pointer-events: none;
-  font-size: 22px;
-  z-index: 99;
-  animation: burstFly 2s ease-out forwards;
-}
-@keyframes burstFly {
-  0% {opacity:1; transform:translateY(0) scale(1);}
-  100% {opacity:0; transform:translateY(-220px) scale(1.5);}
+.sign{
+  text-align:right;
+  margin-top:30px;
+  font-size:17px;
+  color:#d93a70;
+  font-weight:bold;
 }
 
-/* 背景音乐隐藏 */
-audio {display: none;}
+/* 点击爱心 */
+.heart{
+  position:fixed;
+  pointer-events:none;
+  z-index:99;
+  animation:fly 1.6s ease-out forwards;
+}
+@keyframes fly{
+  0%{opacity:1;transform:scale(1);}
+  100%{opacity:0;transform:translateY(-200px) scale(1.5);}
+}
+
+/* 音乐 */
+audio{display:none;}
 </style>
 </head>
+
 <body>
-<audio id="bgm" loop preload="auto">
-  <source src="https://cdn.pixabay.com/download/audio/2022/05/22/audio_9c6f3a7aa6.mp3" type="audio/mpeg">
+<audio id="bgm" loop>
+  <source src="https://audio.pixabay.com/download/audio/2022/05/22/audio_9c6f3a7aa6.mp3" type="audio/mpeg">
+</audio>
 
+<!-- 飘落元素 -->
+<div id="fallContainer"></div>
 
-<div class="book" id="bookWrap">
-  <!-- 封面页 -->
-  <div class="page page-cover">
-    <div class="cover-title">母亲节快乐</div>
-    <div class="cover-sub">To My Dearest Mom</div>
-    <div class="tip-open">点击任意位置 翻开贺卡 ✨</div>
+<!-- 贺卡 -->
+<div class="card">
+  <div class="cover" id="cover">
+    <h1>母亲节快乐</h1>
+    <p>To My Dearest Mom</p>
+    <button class="btn-open" onclick="openCard()">点我打开贺卡 ✨</button>
   </div>
 
-  <!-- 内页 -->
-  <div class="page page-inner">
-    <div class="inner-title">致最美的妈妈</div>
-    <div class="text-line">
-      谢谢你一路包容、一路守护<br>
-      为我遮风挡雨，给我无尽温柔<br>
-      时光慢慢走，愿你永远安康<br>
-      永远优雅，永远被幸福环绕<br>
-      往后的日子，换我好好陪伴你 ❤️
+  <div class="inner" id="inner">
+    <h2>致我最爱的妈妈</h2>
+    <div class="text">
+      感谢你一直以来的包容与守护<br>
+      为我付出所有，给我最温暖的家<br>
+      愿岁月温柔待你，健康常伴<br>
+      愿你永远快乐、永远美丽、永远被爱<br>
+      往后余生，换我好好爱你 ❤️
     </div>
-    <div class="signature">爱你的儿子：Alex</div>
+    <div class="sign">爱你的儿子：Alex</div>
   </div>
 </div>
 
 <script>
-// 生成花瓣星光飘落
-const fallEmoji = ['🌸','💮','✨','💕','🌹','💖'];
-function createFall() {
-  let el = document.createElement('div');
-  el.className = 'fall-item';
-  el.innerHTML = fallEmoji[Math.floor(Math.random()*fallEmoji.length)];
-  el.style.left = Math.random()*100 + '%';
-  el.style.fontSize = Math.random()*12 + 14 + 'px';
-  el.style.animationDuration = Math.random()*5 + 5 + 's';
-  document.body.appendChild(el);
-  setTimeout(()=>el.remove(),12000);
+// 飘落花瓣
+const emojis = ['🌸','💮','🌹','✨','💕','💖'];
+function makeFall() {
+  let f = document.createElement('div');
+  f.className = 'fall';
+  f.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+  f.style.left = Math.random()*100 + '%';
+  f.style.fontSize = Math.random()*12 + 16 + 'px';
+  f.style.animationDuration = Math.random()*4 + 5 + 's';
+  document.body.appendChild(f);
+  setTimeout(()=>f.remove(),10000);
 }
-setInterval(createFall,280);
+setInterval(makeFall,350);
 
-// 翻书交互：点击翻开/合上
-const book = document.getElementById('bookWrap');
-let isOpen = false;
-document.addEventListener('click', ()=>{
-  isOpen = !isOpen;
-  if(isOpen){
-    book.classList.add('open');
-    // 触发背景音乐
-    const bgm = document.getElementById('bgm');
-    bgm.volume = 0.3;
-    bgm.play().catch(e=>{});
-    // 内页文字动画
-    document.querySelector('.text-line').style.animation = 'fadeUp 2s ease forwards 0.6s';
-  }else{
-    book.classList.remove('open');
-  }
-});
+// 打开贺卡
+function openCard() {
+  document.getElementById('cover').style.display = 'none';
+  document.getElementById('inner').style.display = 'block';
+  
+  // 播放音乐
+  let bgm = document.getElementById('bgm');
+  bgm.volume = 0.3;
+  bgm.play().catch(err=>{});
+}
 
-// 点击炸裂爱心
-document.addEventListener('click', e=>{
+// 点击爱心爆炸
+document.addEventListener('click',(e)=>{
   for(let i=0;i<10;i++){
     setTimeout(()=>{
       let h = document.createElement('div');
-      h.className = 'heart-burst';
-      let arr = ['❤️','💖','💗','⭐','💞'];
-      h.innerHTML = arr[Math.floor(Math.random()*arr.length)];
-      h.style.left = e.clientX + (Math.random()-0.5)*100 + 'px';
+      h.className = 'heart';
+      h.innerHTML = ['❤️','💖','💗','⭐'][Math.floor(Math.random()*4)];
+      h.style.left = e.clientX + (Math.random()-0.5)*80 + 'px';
       h.style.top = e.clientY + 'px';
+      h.style.fontSize = Math.random()*10 + 20 + 'px';
       document.body.appendChild(h);
-      setTimeout(()=>h.remove(),2000);
+      setTimeout(()=>h.remove(),1600);
     },i*50);
   }
 });
